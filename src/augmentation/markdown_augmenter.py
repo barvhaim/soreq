@@ -15,7 +15,7 @@ class MarkdownAugmenter:
     def __init__(self):
         self.llm = get_chat_llm_client(
             model_parameters={
-                "temperature": 0.05,
+                "temperature": 0.1,
                 "top_p": 0.5,
                 "max_tokens": 1000,
             }
@@ -27,12 +27,13 @@ class MarkdownAugmenter:
             return "No relevant context found."
 
         context_str = "\n".join(
-            [f"{i + 1}. {doc['content']}" for i, doc in enumerate(context)]
+            [f"{i + 1}. [File: {doc.get('metadata', {}).get('source')}] {doc['content']}" for i, doc in enumerate(context)]
         )
         return context_str
 
     def augment(self, query: str, context: List[Dict]) -> Optional[str]:
         task = """You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
+When your answer is based on specific files from the context, include the relevant file paths in your answer.
 Question: {question} 
 Context: {context} 
 Answer: """
