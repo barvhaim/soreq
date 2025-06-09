@@ -26,7 +26,7 @@ def _get_base_llm_settings(model_name: str) -> Dict:
 
 
 def get_embeddings_client() -> Any:
-    model_name = os.getenv("EMBEDDING_MODEL_NAME", "llama3.1:8b")
+    model_name = os.getenv("EMBEDDING_MODEL_NAME", "mxbai-embed-large")
 
     if EMBEDDINGS_PROVIDER == EmbeddingsProviderType.OLLAMA:
         from langchain_ollama import OllamaEmbeddings

@@ -260,3 +260,5 @@ data/
 
 research/
 !research/README.md
+
+md_faiss_db/

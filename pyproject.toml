@@ -11,4 +11,6 @@ dependencies = [
     "langchain-community>=0.3.24",
     "langchain-ollama>=0.3.3",
     "python-dotenv>=1.1.0",
+    "streamlit>=1.45.1",
+    "unstructured[md]>=0.17.2",
 ]
