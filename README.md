@@ -48,3 +48,30 @@ Soreq is an AI agent designed to help enterprises manage and utilize their knowl
     uv run streamlit run ui.py
     ```
 2. Soreq will start a Streamlit application, which you can access in your web browser at [http://localhost:8501](http://localhost:8501).
+
+
+## Integration with watsonx Orchestrate
+
+### Setup Steps
+0. Ensure Ollama is installed and the required models are downloaded as described in the [Getting Started](#getting-started) section.
+1. Start local wxO deployment (Ensure that the `wxo/.adk` file contains the necessary configuration for wxO.)
+   ```bash
+   alias orchestrate='uv run orchestrate'
+   orchestrate server start --env-file=.adk
+   ```
+   
+2. Start the Soreq MCP server:
+   ```bash
+   uv run mcp_server.py
+   ```
+
+3. Deploy the Soreq agent to wxO.
+    ```bash
+    ./wxo/deploy.sh
+    ```
+
+4. To clean up the deployment, you can run:
+    ```bash
+   ./wxo/cleanup.sh
+   orchestrate server stop
+    ```

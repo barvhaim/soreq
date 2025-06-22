@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import logging
 import os
 from dotenv import load_dotenv
@@ -41,7 +41,7 @@ class MarkdownIndexer:
         logger.info(f"Loaded {len(docs)} documents from {self.docs_folder_path}")
         return docs
 
-    def index(self):
+    def index(self) -> Optional[str]:
         if not self.vector_db:
             raise ValueError("Vector database is not initialized.")
 
@@ -79,3 +79,5 @@ class MarkdownIndexer:
         vector_store.save_local(
             os.getenv("VECTOR_DB_PERSIST_DIRECTORY_MD", "md_faiss_db")
         )
+
+        return f"Indexed {len(docs)} documents from {self.docs_folder_path} into {len(chunks)} chunks and saved to vector store."

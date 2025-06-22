@@ -27,7 +27,10 @@ class MarkdownAugmenter:
             return "No relevant context found."
 
         context_str = "\n".join(
-            [f"{i + 1}. [File: {doc.get('metadata', {}).get('source')}] {doc['content']}" for i, doc in enumerate(context)]
+            [
+                f"{i + 1}. [File: {doc.get('metadata', {}).get('source')}] {doc['content']}"
+                for i, doc in enumerate(context)
+            ]
         )
         return context_str
 
