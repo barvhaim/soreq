@@ -50,7 +50,7 @@ Soreq is an AI agent designed to help enterprises manage and utilize their knowl
 2. Soreq will start a Streamlit application, which you can access in your web browser at [http://localhost:8501](http://localhost:8501).
 
 
-## Integration with watsonx Orchestrate
+## Integration with watsonx Orchestrate (optional!)
 
 ### Setup Steps
 0. Ensure Ollama is installed and the required models are downloaded as described in the [Getting Started](#getting-started) section.
